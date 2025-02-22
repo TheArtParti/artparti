@@ -45,7 +45,7 @@
         .button:hover {
             background-color: #ad1457;
         }
-        .event-list, .contact-form { 
+        .event-list, .contact-form, .banner { 
             margin-top: 40px; 
             background: white; 
             padding: 30px; 
@@ -53,7 +53,7 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
             transition: 0.3s;
         }
-        .event-list:hover, .contact-form:hover {
+        .event-list:hover, .contact-form:hover, .banner:hover {
             transform: scale(1.02);
         }
         input, textarea { 
@@ -94,6 +94,11 @@
         .spacer {
             height: 70px;
         }
+        .banner img {
+            width: 100%;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -108,24 +113,13 @@
         <h1>Welcome to The Art Parti 🎨✨</h1>
         <p class="subheading">Unleash your creativity in a fun, vibrant space!</p>
         
-        <div class="event-list" id="events">
-            <h2>🎭 Upcoming Events</h2>
-            <div class="event-item">
-                <h3>Watercolor Workshop</h3>
-                <p><strong>Date:</strong> March 15, 2025</p>
-                <p>Join us for a relaxing and fun watercolor painting session!</p>
-                <a class="button" href="https://venmo.com/TheArtParti">Book & Pay via Venmo</a>
-            </div>
+        <div class="banner">
+            <img src="https://tse3.mm.bing.net/th?id=OIP.YAnPrhv-gp00kGpJukR50wHaE8&pid=Api" alt="People having fun creating art together">
+            <img src="https://tse4.mm.bing.net/th?id=OIP.vsDvnseWKis9jdjxLEPnxQHaFX&pid=Api" alt="A group enjoying an art session">
         </div>
-        
-        <div class="contact-form" id="contact">
-            <h2>📩 Join Our Community</h2>
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" placeholder="Your Message"></textarea>
-                <button class="button" type="submit">Submit</button>
-            </form>
+
+        <div class="event-list" id="event-list">
+            <h2>🎭 Upcoming Events</h2>
         </div>
     </div>
 </body>
