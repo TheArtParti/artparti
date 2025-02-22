@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -45,7 +44,7 @@
         .button:hover {
             background-color: #ad1457;
         }
-        .event-list, .contact-form, .banner { 
+        .event-list, .contact-form, .banner, .calendar { 
             margin-top: 40px; 
             background: white; 
             padding: 30px; 
@@ -53,7 +52,7 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
             transition: 0.3s;
         }
-        .event-list:hover, .contact-form:hover, .banner:hover {
+        .event-list:hover, .contact-form:hover, .banner:hover, .calendar:hover {
             transform: scale(1.02);
         }
         input, textarea { 
@@ -99,6 +98,17 @@
             border-radius: 15px;
             margin-top: 20px;
         }
+        .calendar-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .calendar select {
+            padding: 10px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            border: 1px solid #d81b60;
+        }
     </style>
 </head>
 <body>
@@ -121,6 +131,43 @@
         <div class="event-list" id="event-list">
             <h2>🎭 Upcoming Events</h2>
         </div>
+
+        <div class="calendar">
+            <h2>📅 Select a Date to Book</h2>
+            <div class="calendar-container">
+                <select id="eventDates"></select>
+            </div>
+            <a class="button" id="bookButton" href="https://venmo.com/TheArtParti">Book Now</a>
+        </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const eventDates = document.getElementById("eventDates");
+            const bookButton = document.getElementById("bookButton");
+            const today = new Date();
+
+            for (let i = 0; i < 30; i++) {
+                let friday = new Date(today);
+                let saturday = new Date(today);
+                friday.setDate(today.getDate() + (i * 7) + (5 - today.getDay()));
+                saturday.setDate(today.getDate() + (i * 7) + (6 - today.getDay()));
+                
+                let fridayOption = document.createElement("option");
+                fridayOption.value = friday.toDateString();
+                fridayOption.textContent = friday.toDateString();
+                eventDates.appendChild(fridayOption);
+                
+                let saturdayOption = document.createElement("option");
+                saturdayOption.value = saturday.toDateString();
+                saturdayOption.textContent = saturday.toDateString();
+                eventDates.appendChild(saturdayOption);
+            }
+            
+            eventDates.addEventListener("change", function() {
+                bookButton.href = "https://venmo.com/TheArtParti?date=" + encodeURIComponent(eventDates.value);
+            });
+        });
+    </script>
 </body>
 </html>
